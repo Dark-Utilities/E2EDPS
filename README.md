@@ -4,6 +4,9 @@
 
 In the age of digital communication, data privacy and security have become paramount concerns. This paper presents the End-to-End Data Protection System (E2EDPS), a novel protocol that leverages elliptic curve cryptography (ECC) to ensure the confidentiality and integrity of user data. By employing a unique private key-based authentication mechanism and a dual encryption strategy, E2EDPS aims to provide robust protection against unauthorized access, even in scenarios involving third-party intermediaries.
 
+![image](https://github.com/user-attachments/assets/9d1e74fa-95a0-4e8f-b209-94fadbc515b7)
+
+
 ## 1. Introduction
 
 The increasing reliance on cloud services and web applications has raised significant concerns regarding data privacy and security. Traditional authentication methods often expose sensitive information to potential breaches. E2EDPS addresses these challenges by implementing a system where user data is encrypted on the client-side before transmission, ensuring that it remains secure throughout its lifecycle.
