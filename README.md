@@ -50,7 +50,7 @@ static generatePrivateKey(): string {
 
 ### 3.2 Hashing
 
-To enhance security, the private key is hashed using the SHA-512 algorithm. This process ensures that the private key is not stored in plaintext:
+To enhance security, the private key is hashed using the SHA-512 algorithm. This process ensures that the private key is not stored in plaintext and it's **hashed in client side**:
 
 ```javascript
 static async getPrivateKeyHash(privateKey: string): Promise<string> {
