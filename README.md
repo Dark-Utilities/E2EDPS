@@ -20,6 +20,9 @@ The motivation behind E2EDPS stems from the need for a secure communication fram
 
 ## 2. System Architecture
 
+![image](https://github.com/user-attachments/assets/16de2901-577c-4bec-9d32-82c6a6269a2c)
+
+
 E2EDPS is designed around a client-server architecture where the client is responsible for encrypting data before sending it to the server. The server, in turn, manages the encrypted data without ever accessing it in plaintext. The architecture consists of the following components:
 
 ### 2.1 Key Generation
