@@ -1,11 +1,8 @@
-# Research Paper: End-to-End Data Protection System (E2EDPS)
+## Research Paper: End-to-End Data Protection System (E2EDPS)
 
 ## Abstract
 
 In the age of digital communication, data privacy and security have become paramount concerns. This paper presents the End-to-End Data Protection System (E2EDPS), a novel protocol that leverages elliptic curve cryptography (ECC) to ensure the confidentiality and integrity of user data. By employing a unique private key-based authentication mechanism and a dual encryption strategy, E2EDPS aims to provide robust protection against unauthorized access, even in scenarios involving third-party intermediaries.
-
-![image](https://github.com/user-attachments/assets/9d1e74fa-95a0-4e8f-b209-94fadbc515b7)
-
 
 ## 1. Introduction
 
@@ -17,14 +14,11 @@ The motivation behind E2EDPS stems from the need for a secure communication fram
 
 ### 1.2 Objectives
 
-- To develop a protocol that ensures end-to-end encryption of user data.
-- To implement a secure authentication mechanism based on a 64-character private key.
-- To evaluate the effectiveness and efficiency of the proposed system in real-world scenarios.
+-   To develop a protocol that ensures end-to-end encryption of user data.
+-   To implement a secure authentication mechanism based on a private key login system.
+-   To evaluate the effectiveness and efficiency of the proposed system in real-world scenarios.
 
 ## 2. System Architecture
-
-![image](https://github.com/user-attachments/assets/16de2901-577c-4bec-9d32-82c6a6269a2c)
-
 
 E2EDPS is designed around a client-server architecture where the client is responsible for encrypting data before sending it to the server. The server, in turn, manages the encrypted data without ever accessing it in plaintext. The architecture consists of the following components:
 
@@ -34,11 +28,11 @@ The system generates a random private key, which serves as the foundation for al
 
 ### 2.2 Public Key Derivation
 
-From the private key, a corresponding public key is derived using the secp256k1 elliptic curve. This public key is shared with the server and used for encrypting user data.
+From the private key, a corresponding public key is derived using the secp256k1 elliptic curve on the browser side. When a user logs in, the browser sends the hashed version of the private key (hashed client-side) to the server, ensuring that the raw private key is never transmitted. The server checks if this hashed private key exists in its database to verify user existence and responds with its own public key.
 
 ### 2.3 Data Encryption and Decryption
 
-Data is encrypted on the client-side using the public key before transmission. Upon receiving the data, the server stores it securely without decrypting it. The client can later decrypt the data using the private key.
+Data is encrypted on the client-side using the public key before transmission. Upon receiving the data, the server stores it securely without decrypting it. The user's private key is also utilized to encrypt sensitive information such as their name or any other personal data before it is stored in the database. This information can later be decrypted client-side when needed.
 
 ## 3. Cryptographic Operations
 
@@ -56,7 +50,7 @@ static generatePrivateKey(): string {
 
 ### 3.2 Hashing
 
-To enhance security, the private key is hashed using the SHA-512 algorithm. This process ensures that the private key is not stored in plaintext and it's **hashed in client side**:
+To enhance security, the private key is hashed using the SHA-512 algorithm on the client side. This process ensures that the private key is not stored in plaintext:
 
 ```javascript
 static async getPrivateKeyHash(privateKey: string): Promise<string> {
@@ -102,22 +96,18 @@ By encrypting data on the client-side, E2EDPS ensures that sensitive information
 
 ### 4.2 Key Management
 
-The use of a unique private key for each user minimizes the risk of key compromise. Additionally, the hashing of the private key adds an extra layer of security.
+The use of a unique private key for each user minimizes the risk of key compromise. Additionally, hashing of the private key adds an extra layer of security since only hashed values are stored on the server.
 
 ### 4.3 Robust Authentication
 
-The 64-character private key serves as a strong authentication mechanism, making it difficult for attackers to gain unauthorized access.
+The implementation of a private key login system with a strong 64-character private key serves as an effective authentication mechanism, making it difficult for attackers to gain unauthorized access.
 
 ## 5. Conclusion
 
-The End-to-End Data Protection System (E2EDPS) represents a significant advancement in secure data handling practices. By integrating elliptic curve cryptography and a unique private key-based authentication system, E2EDPS provides a robust framework for protecting user data against unauthorized access. Future work will focus on optimizing the system for performance and exploring additional cryptographic techniques to enhance security.
+The End-to-End Data Protection System (E2EDPS) represents a significant advancement in secure data handling practices. By integrating elliptic curve cryptography and a unique private key-based authentication system, E2EDPS provides a robust framework for protecting user data against unauthorized access while ensuring that all communications are encrypted end-to-end. Future work will focus on optimizing system performance and exploring additional cryptographic techniques to enhance security.
 
 ## 6. References
 
-1. Boneh, D., & Shoup, V. (2017). *A Graduate Course in Applied Cryptography*. https://crypto.stanford.edu/~dabo/cryptobook/
-2. NIST. (2019). *Recommendation for Key Management: Part 1 - General*. NIST Special Publication 800-57.
-3. R. Rivest, A. Shamir, & L. Adleman. (1978). *A Method for Obtaining Digital Signatures and Public-Key Cryptosystems*. Communications of the ACM.
-
----
-
-This research paper outlines the principles and implementation of the E2EDPS protocol, highlighting its significance in enhancing data security in digital communications.
+1. Boneh, D., & Shoup, V. (2017). _A Graduate Course in Applied Cryptography_.
+2. NIST. (2019). _Recommendation for Key Management: Part 1 - General_. NIST Special Publication 800-57.
+3. Rivest, R., Shamir, A., & Adleman, L. (1978). _A Method for Obtaining Digital Signatures and Public-Key Cryptosystems_. Communications of the ACM.
