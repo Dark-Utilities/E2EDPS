@@ -1,3 +1,5 @@
+[Portable Document](https://github.com/Dark-Utilities/E2EDPS/blob/main/E2EDPS-Research-Paper.pdf) | [Contact Email](mailto:Inplex-sys@protonmail.ch)
+
 ## Research Paper: End-to-End Data Protection System (E2EDPS)
 
 ## Abstract
